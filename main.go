@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 
+	"lirawx.cn/go-web/config"
 	"lirawx.cn/go-web/routers"
 )
 
@@ -22,7 +24,8 @@ import (
 // @BasePath /
 func main() {
 	r := routers.SetupRouter()
-	if err := r.Run(); err != nil {
+	conf := config.ReadConfig()
+	if err := r.Run(":" + strconv.Itoa(conf.Port)); err != nil {
 		fmt.Println("startup service failed, err:%v\n", err)
 	}
 }
