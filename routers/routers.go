@@ -17,5 +17,8 @@ func SetupRouter() *gin.Engine {
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 
 	r.GET("/hello", controllers.HelloController)
+
+	r.POST("/addTodo", controllers.CreateTodo)
+	r.GET("/getTodoList", controllers.GetTodoList)
 	return r
 }

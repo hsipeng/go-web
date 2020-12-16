@@ -17,7 +17,7 @@ clean: ## 执行清理
 	rm -rf ./output/*
 
 build: lint clean ## 打包 先格式化
-	go build -o ./output/main .
+	GIN_MODE=release go build -o ./output/main .
 
 docs: lint  ## swag 文档生成
 	swag init

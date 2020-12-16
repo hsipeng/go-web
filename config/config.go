@@ -16,21 +16,22 @@ type MySQLConfig struct {
 	Port     int    `json:"port"`
 }
 
-type config struct {
+// 项目配置
+type Config struct {
 	Port  int         `json:"port"`
 	Name  string      `json:"name,omitempty"`
 	Mysql MySQLConfig `json:"mysql,omitempty"`
 }
 
 // ReadConfig 读取配置
-func ReadConfig() config {
+func ReadConfig() Config {
 	var runtimeViper = viper.New()
 	runtimeViper.SetConfigFile("config.yaml") // 指定配置文件
 	runtimeViper.AddConfigPath("../config/")  // 多次调用以添加多个搜索路径
 	runtimeViper.AddConfigPath(".")           // 还可以在工作目录中查找配置
 	runtimeViper.AddConfigPath("../")
 
-	var runtimeConf config
+	var runtimeConf Config
 
 	// read from config the first time.
 	err := runtimeViper.ReadInConfig()

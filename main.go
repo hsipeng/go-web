@@ -5,6 +5,8 @@ import (
 	"strconv"
 
 	"lirawx.cn/go-web/config"
+	"lirawx.cn/go-web/db"
+	"lirawx.cn/go-web/models"
 	"lirawx.cn/go-web/routers"
 )
 
@@ -25,6 +27,12 @@ import (
 func main() {
 	r := routers.SetupRouter()
 	conf := config.ReadConfig()
+	if err := db.InitMySQL(conf); err != nil {
+		fmt.Println("init mysql failed, err:%v\n", err)
+	}
+	// 模型绑定
+	db.DB.AutoMigrate(&models.Todo{})
+
 	if err := r.Run(":" + strconv.Itoa(conf.Port)); err != nil {
 		fmt.Println("startup service failed, err:%v\n", err)
 	}
