@@ -57,3 +57,19 @@ func GetATodo(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, todo)
 }
+
+// GetTodo 获取一个todo
+func GetTodo(c *gin.Context) {
+	id := c.Param("id") // 路径参数
+	fmt.Printf("id string get, %v\n", id)
+	if id == "" {
+		c.JSON(http.StatusOK, gin.H{"error": "无效的id"})
+		return
+	}
+	todo, err := services.GetATodoService(id)
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, todo)
+}
