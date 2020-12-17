@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.tmpl": "html",
+        "*.tag": "html",
+        "*.ttml": "xml",
+        "*.ttss": "css"
+    }
+}
