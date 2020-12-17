@@ -22,9 +22,7 @@ FROM debian:stretch-slim
 
 COPY ./wait-for.sh /
 # 配置文件
-COPY ./config.yaml /
-COPY ./init.sql /
-
+COPY ./config/config.docker.yaml /config.yaml
 
 # 从builder镜像中把/dist/app 拷贝到当前目录
 COPY --from=builder /build/app /

@@ -21,3 +21,6 @@ build: lint clean ## 打包 先格式化
 
 docs: lint  ## swag 文档生成
 	swag init
+
+docker: lint ## docker 容器启动
+	docker-compose up --build

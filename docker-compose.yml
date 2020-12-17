@@ -9,9 +9,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "root123456"
       MYSQL_DATABASE: "goweb"
-      MYSQL_USER: "root"
+      MYSQL_USER: "admin"
       MYSQL_PASSWORD: "123456"
-      MYSQL_ROOT_HOST: "%"
   redis:
     image: "redis"
     ports:
