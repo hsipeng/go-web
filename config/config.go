@@ -16,11 +16,19 @@ type MySQLConfig struct {
 	Port     int    `json:"port"`
 }
 
-// 项目配置
+// RedisConfig redis 配置
+type RedisConfig struct {
+	Password string `json:"password"`
+	Host     string `json:"host"`
+	Port     int    `json:"port"`
+}
+
+// Config 项目配置
 type Config struct {
 	Port  int         `json:"port"`
 	Name  string      `json:"name,omitempty"`
 	Mysql MySQLConfig `json:"mysql,omitempty"`
+	Redis RedisConfig `json:"redis,omitempty"`
 }
 
 // ReadConfig 读取配置

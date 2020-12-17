@@ -1,11 +1,13 @@
 package controllers
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 
 	"lirawx.cn/go-web/models"
+	"lirawx.cn/go-web/services"
 )
 
 // CreateTodo 创建todo
@@ -38,4 +40,20 @@ func GetTodoList(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, todoList)
 	}
+}
+
+// GetATodo 获取一个todo
+func GetATodo(c *gin.Context) {
+	id := c.Query("id") // c.Query("id") // 是 c.Request.URL.Query().Get("id") 的简写
+	fmt.Printf("id string get, %v\n", id)
+	if id == "" {
+		c.JSON(http.StatusOK, gin.H{"error": "无效的id"})
+		return
+	}
+	todo, err := services.GetATodoService(id)
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, todo)
 }

@@ -20,5 +20,6 @@ func SetupRouter() *gin.Engine {
 
 	r.POST("/addTodo", controllers.CreateTodo)
 	r.GET("/getTodoList", controllers.GetTodoList)
+	r.GET("/getTodo", controllers.GetATodo)
 	return r
 }
