@@ -15,7 +15,7 @@ make install
 make start
 ```
 
-# docker-compose 部署启动
+## docker-compose 部署启动
 
 ```bash
 docker-compose up
@@ -38,3 +38,8 @@ docker-compose up
 参考 https://github.com/docker-library/mysql/issues/275
 
 ```
+
+
+参考文档
+1. [Gin 中文文档](http://www.kancloud.cn:8080/shuangdeyu/gin_book/949415)
+2. [Go语言学习之路/Go语言教程](https://www.liwenzhou.com/posts/Go/go_menu/)
